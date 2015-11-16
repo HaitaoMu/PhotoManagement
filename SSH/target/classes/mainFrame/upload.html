@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Upload File</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link href="/SSH/common/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<link href="/SSH/common/fileinput.min.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+	  <div class="jumbotron">
+	    <h1>图片上传</h1>
+	    <p>请上传你的照片</p>
+	  </div>
+	  <form enctype="multipart/form-data"> 
+		  <div class="form-group">
+			<input id="picUpload" type="file" multiple name="files[]">
+		  </div>
+      </form> 
+      <footer>
+		<p align="center">&copy; Company 2015</p>
+	  </footer>    
+   </div>
+   <script type="text/javascript" src="/SSH/common/jquery-2.js"></script>
+	<script type="text/javascript" src="/SSH/common/fileinput.min.js"></script>
+	<script type="text/javascript" src="/SSH/common/bootstrap/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="/SSH/common/fileinput_locale_zh.js"></script>
+<script type="text/javascript">
+$(function(){
+	 
+	// initialize with plugin options
+	$("#picUpload").fileinput({
+		language: 'zh',
+        uploadUrl: '.././upload', // you must set a valid URL here else you will get an error
+        allowedFileExtensions : ['jpg', 'png','gif'],
+        overwriteInitial: false,
+        maxFileSize: 10000,
+        maxFilesNum: 50,
+        minFilesNum: 2,
+        initialPreview: [
+                         "<img src='../common/image/xx.jpg' class='file-preview-image' alt='Desert' title='Desert'>",
+                         "<img src='../common/image/xx.jpg' class='file-preview-image' alt='Jelly Fish' title='Jelly Fish'>",
+                     ],
+     // initial preview configuration
+        initialPreviewConfig: [
+            {
+                caption: 'xx.jpg', 
+                width: '120px', 
+                url: '/localhost/avatar/delete', 
+                key: 100, 
+                extra: {id: 100}
+            },
+            {
+                caption: 'xx.jpg', 
+                width: '120px', 
+                url: '/localhost/avatar/delete', 
+                key: 101, 
+                extra: function() { 
+                    return {id: $("#id").val()};
+                },
+            }
+        ],
+        showPreview: true,
+        allowedFileTypes: ['image', 'video', 'flash'],
+        slugCallback: function(filename) {
+            return filename.replace('(', '_').replace(']', '_');
+        }
+	});
+});
+</script>
+</body>
+</html>
