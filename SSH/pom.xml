@@ -44,6 +44,9 @@
 	<jta.version>1.1</jta.version>
 	<oracle.version>11.2.0.3</oracle.version>
 	<json-lib.version>2.4</json-lib.version>
+	<aspectj.version>1.6.8</aspectj.version>
+	<aspectjtools.version>1.6.2</aspectjtools.version>
+	<cglib.version>2.2</cglib.version>	
   </properties>
   <dependencies>
    <!-- Junit Log4j -->
@@ -158,6 +161,11 @@
 		<version>${commons.pool.version}</version>
 	</dependency>	
 	<dependency>
+		<groupId>commons-collections</groupId>
+		<artifactId>commons-collections</artifactId>
+		<version>3.2.2</version>
+	</dependency>	
+	<dependency>
 		<groupId>com.oracle</groupId>
 		<artifactId>ojdbc6</artifactId>
 		<version>${oracle.version}</version>
@@ -199,7 +207,7 @@
 	
 	<dependency>
 		<groupId>org.springframework</groupId>
-		<artifactId>spring-expression</artifactId>
+		<artifactId>spring-aop</artifactId>
 		<version>${spring.version}</version>
 	</dependency>
 	<dependency>
@@ -212,16 +220,18 @@
 		<artifactId>spring-expression</artifactId>
 		<version>${spring.version}</version>
 	</dependency>
+
 	<dependency>
-		<groupId>org.springframework</groupId>
-		<artifactId>spring-tx</artifactId>
-		<version>${spring.version}</version>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjweaver</artifactId>
+		<version>${aspectj.version}</version>
 	</dependency>
-	<!-- <dependency> -->
-	<!-- <groupId>org.springframework</groupId> -->
-	<!-- <artifactId>spring-asm</artifactId> -->
-	<!-- <version>${spring-asm.version}</version> -->
-	<!-- </dependency> -->
+
+	<dependency>
+		<groupId>org.aspectj</groupId>
+		<artifactId>aspectjtools</artifactId>
+		<version>${aspectjtools.version}</version>
+	</dependency>	
 	<dependency>
 		<groupId>org.springframework</groupId>
 		<artifactId>spring-oxm</artifactId>
@@ -275,7 +285,11 @@
 		<artifactId>commons-logging</artifactId>
 		<version>1.2</version>
 	</dependency>
-
+	<dependency>
+			<groupId>cglib</groupId>
+			<artifactId>cglib-nodep</artifactId>
+			<version>${cglib.version}</version>
+	</dependency>
 	<!-- JSON to java object -->
 	<dependency>
 		<groupId>net.sf.json-lib</groupId>

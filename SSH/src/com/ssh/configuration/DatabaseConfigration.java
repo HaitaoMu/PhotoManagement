@@ -7,8 +7,6 @@ import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.hibernate.tool.hbm2ddl.SchemaExport;
-import org.springframework.cache.ehcache.EhCacheCacheManager;
-import org.springframework.cache.ehcache.EhCacheManagerFactoryBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -16,7 +14,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.annotation.PropertySources;
 import org.springframework.core.env.Environment;
-import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.HibernateTransactionManager;
@@ -46,19 +43,20 @@ public class DatabaseConfigration implements TransactionManagementConfigurer {
 		log.info("[Initializing Database Configration...]");
 	}
 
-//	@Bean
-//	public EhCacheCacheManager ehCacheCacheManager() {
-//		return new EhCacheCacheManager(ehCacheManagerFactoryBean().getObject());
-//	}
-//
-//	@Bean
-//	public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
-//		EhCacheManagerFactoryBean cacheManagerFactoryBean = new EhCacheManagerFactoryBean();
-//		cacheManagerFactoryBean.setConfigLocation(new ClassPathResource(
-//				"conf/ehcache.xml"));
-//		cacheManagerFactoryBean.setShared(true);
-//		return cacheManagerFactoryBean;
-//	}
+	// @Bean
+	// public EhCacheCacheManager ehCacheCacheManager() {
+	// return new EhCacheCacheManager(ehCacheManagerFactoryBean().getObject());
+	// }
+	//
+	// @Bean
+	// public EhCacheManagerFactoryBean ehCacheManagerFactoryBean() {
+	// EhCacheManagerFactoryBean cacheManagerFactoryBean = new
+	// EhCacheManagerFactoryBean();
+	// cacheManagerFactoryBean.setConfigLocation(new ClassPathResource(
+	// "conf/ehcache.xml"));
+	// cacheManagerFactoryBean.setShared(true);
+	// return cacheManagerFactoryBean;
+	// }
 
 	@Bean(name = "localDatasource")
 	public DriverManagerDataSource dataSource() {
@@ -86,6 +84,33 @@ public class DatabaseConfigration implements TransactionManagementConfigurer {
 
 		return dataSource;
 	}
+
+	// @Bean(name = "localDatasource")
+	// public FixedBasicDataSource dataSource() {
+	// FixedBasicDataSource dataSource = new FixedBasicDataSource();
+	// dataSource.setDriverClassName(env
+	// .getProperty(Constants.RDM_JDBC_DRIVER));
+	// dataSource.setUrl(env.getProperty(Constants.RDM_JDBC_URL));
+	// if (StringUtils
+	// .isNotEmpty(env.getProperty(Constants.RDM_JDBC_USERNAME))) {
+	// dataSource
+	// .setUsername(env.getProperty(Constants.RDM_JDBC_USERNAME));
+	// } else {
+	// // Set username from DB or Servie
+	// dataSource.setUsername("");
+	// }
+	// if (StringUtils
+	// .isNotEmpty(env.getProperty(Constants.RDM_JDBC_PASSWORD))) {
+	// dataSource
+	// .setPassword(env.getProperty(Constants.RDM_JDBC_PASSWORD));
+	//
+	// } else {
+	// // Set password from DB or Servie
+	// dataSource.setPassword("");
+	// }
+	//
+	// return dataSource;
+	// }
 
 	/**
 	 * 
@@ -157,17 +182,17 @@ public class DatabaseConfigration implements TransactionManagementConfigurer {
 					setProperty("hibernate.connection.password", "");
 				}
 
-//				setProperty(
-//						"hibernate.cache.region.factory_class",
-//						env.getProperty(Constants.HIBERNATE_CACHE_FACTORY_CLASS));
-//				setProperty(
-//						"hibernate.cache.use_second_level_cache",
-//						env.getProperty(Constants.HIBERNATE_USE_SECOND_LEVEL_CACHE));
-//				setProperty("hibernate.cache.use_query_cache",
-//						env.getProperty(Constants.HIBERNATE_USE_QUERY_CACHE));
-//				setProperty(
-//						"org.hibernate.cache.ehcache.configurationResourceName",
-//						env.getProperty(Constants.HIBERNATE_CACHE_RESOURCE_NAME));
+				// setProperty(
+				// "hibernate.cache.region.factory_class",
+				// env.getProperty(Constants.HIBERNATE_CACHE_FACTORY_CLASS));
+				// setProperty(
+				// "hibernate.cache.use_second_level_cache",
+				// env.getProperty(Constants.HIBERNATE_USE_SECOND_LEVEL_CACHE));
+				// setProperty("hibernate.cache.use_query_cache",
+				// env.getProperty(Constants.HIBERNATE_USE_QUERY_CACHE));
+				// setProperty(
+				// "org.hibernate.cache.ehcache.configurationResourceName",
+				// env.getProperty(Constants.HIBERNATE_CACHE_RESOURCE_NAME));
 
 				setProperty(
 						"hibernate.transaction.factory_class",

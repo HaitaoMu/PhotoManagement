@@ -12,7 +12,7 @@
 	  <h1>用户注册</h1>
 	  <p>请填写您的基本信息。</p> 
 	</div>
-	<form id="registerForm" class="form-horizontal">	  
+	<form id="registerForm" class="form-horizontal" role="form">	  
 	    <div class="form-group">
 			<label for="userName" class="col-sm-2 control-label">用户名</label>
 			<div class="col-sm-10">		
@@ -34,7 +34,7 @@
 	    <div class="form-group">
 			<label for="phoneNumber" class="col-sm-2 control-label">手机号码</label>	
 			<div class="col-sm-10">	
-				<input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="请输入手机"/>
+				<input type="text" class="form-control" id="phoneNumber" name="phoneNumber" placeholder="请输入手机号码"/>
 			</div>
 	    </div>
 	    <div class="form-group">
@@ -51,17 +51,76 @@
 	    </div>
 	    <div class="form-group modal-footer">
 	    	<div class="row">
-		    	<button id="submit" class="col-sm-offset-4 col-sm-2 col-xs-offset-2 col-xs-2 btn btn-info">提交</button>
-		    	<button id="cancel" class="col-sm-offset-2 col-sm-2 col-sm-offset-2 col-xs-offset-4 col-xs-2 btn btn-info">取消</button>
+		    	<button id="submitUser" class="col-sm-offset-4 col-sm-2 col-xs-offset-2 col-xs-2 btn btn-primary">注册</button>
+		    	<button id="cancel" class="col-sm-offset-2 col-sm-2 col-sm-offset-2 col-xs-offset-4 col-xs-2 btn btn-primary">取消</button>
 	    	</div>
 	    </div>
 	</form>
 	  <footer>
 		<p align="center">&copy; Chen Yan 2015</p>
-	  </footer> 
+	  </footer>
+	  <div id="success" class="modal fade">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">
+						<span>X</span>
+						<span class="sr-only">关闭</span>
+					</button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">
+					<h5 class="modal-title" align="center">注册成功</h5>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="failed" class="modal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">
+						<span>X</span>
+						<span class="sr-only">关闭</span>
+					</button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">
+					<h5 class="modal-title" align="center">注册失败</h5>
+				</div>
+				<div class="modal-footer">
+					<button class="btn btn-primary" data-dismiss="modal">关闭</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div id="warnning" class="modal">
+		<div class="modal-dialog modal-lg">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button class="close" data-dismiss="modal">
+						<span>X</span>
+						<span class="sr-only">关闭</span>
+					</button>
+					<h4 class="modal-title">提示</h4>
+				</div>
+				<div class="modal-body">
+					<h5 class="modal-title" align="center">您注册成功了,是否要返回登录页面?</h5>
+				</div>
+				<div class="modal-footer">
+					<button id="forwardTo" class="btn btn-primary" data-dismiss="modal">是</button>
+					<button id="noForward" class="btn btn-primary" data-dismiss="modal">否</button>
+				</div>
+			</div>
+		</div>
+	</div>			 
 	</div>
 	<script type="text/javascript" src="/SSH/common/jquery-2.js"></script>
+	<script type="text/javascript" src="/SSH/common/bootstrap/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="/SSH/common/function.common.js"></script>
-	<script type="text/javascript" src="/SSH/register.js"></script>	
+	<script type="text/javascript" src="./register.js"></script>	
 </body>
 </html>
